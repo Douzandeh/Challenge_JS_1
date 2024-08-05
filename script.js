@@ -55,7 +55,23 @@ const customers = [
 ];
 
 //Filter
-const over60 = customers.filter((customer) => customer.age >= 60);
-const under10 = customers.filter((customer) => customer.age <= 10);
-console.log(under10);
- 
+// const over60 = customers.filter((customer) => customer.age >= 60);
+// const under10 = customers.filter((customer) => customer.age <= 10);
+// console.log(under10);
+
+//Map
+const customersWitthTitle = customers.map((customer) => {
+  let title = "";
+  const { f_name, l_name } = customer;
+  if (customer.gender === "M") {
+    title = "Mr.";
+  } else if (customer.gender === "F" && customer.married) {
+    title = "Mrs.";
+  } else {
+    title = "Miss";
+  }
+  customer.fullName = `${title} ${f_name} ${l_name}`;
+  return customer;
+});
+
+console.log(customersWitthTitle);
